@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/jninja/cloudbucket#readme",
   "dependencies": {
+    "basic-auth": "^1.0.3",
+    "bcrypt": "^0.8.5",
     "bower": "^1.4.1",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "mongoose": "^4.1.3"
   }
 }
