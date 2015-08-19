@@ -1,0 +1,22 @@
+{
+  "name": "cloudbucket",
+  "version": "1.0.0",
+  "description": "Amazon S3-based cloud personal cloud storage for images, videos and more. Can be deployed on Heroku.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://jninja@github.com/jninja/cloudbucket.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jninja/cloudbucket/issues"
+  },
+  "homepage": "https://github.com/jninja/cloudbucket#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "cloudbucket",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jninja/cloudbucket",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.4"
+  }
+}
