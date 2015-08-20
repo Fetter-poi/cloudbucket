@@ -11,8 +11,28 @@
 
 <h1>CloudBucket</h1>
 
+<div ng-controller="MyCtrl">
+  <legend>Upload on file select</legend>
+  <button type="file" ngf-select="uploadFiles($files)" multiple>
+    Select Files
+  </button>
+  <br>
+  Files:
+  <ul>
+    <li ng-repeat="f in files">{{f.name}} {{f.$error}} {{f.$errorParam}}
+      <span class="progress" ng-show="f.progress >= 0">
+        <div style="width:{{f.progress}}%"
+             ng-bind="f.progress + '%'"></div>
+      </span>
+    </li>
+  </ul>
+  Errori: {{errorMsg}}
+</div>
+
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload-all.js"></script>
+<script src="app/app.js"></script>
 </body>
 </html>

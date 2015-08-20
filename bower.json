@@ -12,6 +12,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.5",
-    "angular": "~1.4.4"
+    "angular": "~1.4.4",
+    "ng-file-upload": "~7.0.6"
   }
 }
