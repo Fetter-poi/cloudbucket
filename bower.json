@@ -13,6 +13,23 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "angular": "~1.4.4",
-    "ng-file-upload": "~7.0.6"
+    "ng-file-upload": "~7.0.6",
+    "lodash": "~3.10.1",
+    "angular-moment": "~0.10.2",
+    "holderjs": "~2.8.2",
+    "fontawesome": "~4.4.0",
+    "angular-motion": "~0.4.2",
+    "angular-animate": "~1.4.4",
+    "angular-bootstrap": "~0.13.3",
+    "angular-ui-router": "~0.2.15",
+    "angular-editable-text": "~1.1.2",
+    "angular-dialog-service": "~5.2.8",
+    "angular-sanitize": "~1.4.4",
+    "angular-translate": "~2.7.2",
+    "ngstorage": "~0.3.9"
+  },
+  "resolutions": {
+    "angular": "~1.4.4",
+    "angular-bootstrap": "~0.13.3"
   }
 }

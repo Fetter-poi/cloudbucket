@@ -1,0 +1,38 @@
+<div class="pull-right" ng-show="album._id">
+  <button type="button" title="Elimina questo album" ng-click="deleteAlbum()" class="btn btn-default"><i
+    class="fa fa-trash-o"></i></button>
+</div>
+<h3 editable-text="album.title" on-change="validateTitle(value)"></h3>
+
+<p>
+  <a ui-sref="albums">Torna all'elenco degli album</a>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th></th>
+    <th>Nome file</th>
+    <th>Data</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="file in files">
+    <td>
+      <a ui-sref="files/details({id: file._id})">
+        <div ng-if="isImage(file)">
+          <img ng-src="v1/files/{{file._id}}/download?thumbnail=1"/>
+        </div>
+        <div ng-if="!isImage(file)">
+          <img src="assets/images/Mimetypes-gtk-file-icon.png"/>
+        </div>
+      </a>
+    </td>
+    <td><a ui-sref="files/details({id: file._id})">
+      {{file.filename}}
+    </a></td>
+    <td>{{(file.creationDate || file.createdAt) | amDateFormat:'ddd D MMMM YYYY, HH:mm'}}</td>
+  </tr>
+  </tbody>
+
+</table>

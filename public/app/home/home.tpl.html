@@ -1,0 +1,43 @@
+<div class="panel panel-default drop-box" ngf-drop ngf-select
+     ng-model="files" ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true">
+  <div class="panel-body">
+    <div>
+      <h3>Trascina qui i file da caricare</h3>
+    </div>
+  </div>
+</div>
+<div ngf-no-file-drop>
+  <div class="alert alert-warning">
+    Trascinamento dei file non supportato da questo browser.
+  </div>
+</div>
+<div class="panel panel-default" ng-show="files">
+  <div class="panel-body">
+    <div class="media upload-results" ng-repeat="file in files">
+      <div class="media-left" ng-if="isImage(file)">
+        <a ng-href="#/files/{{file._id}}" ng-show="file._id">
+          <img ngf-src="file || 'assets/images/Upload-toCloud-icon.png'">
+        </a>
+        <img
+          style="opacity: 0.5;"
+          ngf-src="file || 'assets/images/Upload-toCloud-icon.png'" ng-hide="file._id">
+      </div>
+      <div class="media-body">
+        <a ng-href="#/files/{{file._id}}" ng-show="file._id">
+          <h4 class="media-heading">{{file.name}}</h4>
+        </a>
+        <h4 class="media-heading" ng-hide="file._id">{{file.name}}</h4>
+
+        <div class="progress">
+          <div class="progress-bar" ng-style="{width: file.progressPercentage + '%'}">{{file.progressPercentage}}%
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+

@@ -1,0 +1,16 @@
+<form ng-submit="submit(form)" name="form">
+  <div class="modal-header">
+    <h3 class="modal-title">Nuovo album</h3>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <input type="text" required name="title" ng-model="model.title" class="form-control" id="title"
+             placeholder="Titolo" autofocus>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="submit">Crea</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Annulla</button>
+  </div>
+</form>
+

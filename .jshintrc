@@ -22,6 +22,9 @@
   "smarttabs": true,
   "white": false,
   "globals": {
+    "$": false,
+    "_": false,
+    "angular": false,
     "describe": false,
     "before": false,
     "assert": false,
