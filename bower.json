@@ -30,10 +30,17 @@
     "angular-bootstrap-select": "~0.0.5",
     "isteven-angular-multiselect": "~4.0.0",
     "ng-tags-input": "3.0.0",
-    "angular-toastr": "~1.4.1"
+    "angular-toastr": "~1.4.1",
+    "videogular": "~1.2.5",
+    "videogular-themes-default": "~1.2.5",
+    "videogular-controls": "~1.2.5",
+    "videogular-buffering": "~1.2.5",
+    "videogular-overlay-play": "~1.2.5",
+    "videogular-poster": "~1.2.5"
   },
   "resolutions": {
     "angular": "~1.4.4",
-    "angular-bootstrap": "~0.13.3"
+    "angular-bootstrap": "~0.13.3",
+    "angular-sanitize": "~1.4.4"
   }
 }

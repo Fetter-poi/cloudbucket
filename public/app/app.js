@@ -16,6 +16,10 @@ angular.module('app', [
   'isteven-multi-select',
   'ngTagsInput',
   'toastr',
+  'com.2fdevs.videogular',
+  'com.2fdevs.videogular.plugins.controls',
+  'com.2fdevs.videogular.plugins.overlayplay',
+  'com.2fdevs.videogular.plugins.poster',
   'ngStorage'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $translateProvider, toastrConfig) {

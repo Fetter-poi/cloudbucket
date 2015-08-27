@@ -1,5 +1,5 @@
 angular.module('app').controller('FileDetailsCtrl', function ($scope, $stateParams, fileService, dialogs, $state,
-                                                              albumService, $sessionStorage, toastr) {
+                                                              albumService, $sessionStorage, toastr, $sce) {
   'use strict';
 
   function update(data) {
@@ -14,6 +14,20 @@ angular.module('app').controller('FileDetailsCtrl', function ($scope, $statePara
 
   fileService.getById($stateParams.id).then(function (response) {
     $scope.file = response.data.content;
+    if (/^video/.test($scope.file.contentType)) {
+      console.log('v1/files/' + $scope.file.filename + '/download');
+      $scope.video = {
+        sources: [
+          {
+            src: $sce.trustAsResourceUrl('v1/files/' + $scope.file.filename + '/download'),
+            type: $scope.file.contentType
+          }
+        ],
+        theme: {
+          url: 'http://www.videogular.com/styles/themes/default/latest/videogular.css'
+        }
+      };
+    }
     if ($scope.file.tags) {
       $scope.tags = _.map($scope.file.tags, function (tag) {
         return {

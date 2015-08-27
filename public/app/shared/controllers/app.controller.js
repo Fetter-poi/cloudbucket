@@ -10,6 +10,14 @@ angular.module('app').controller('AppCtrl', function ($scope, $sessionStorage) {
     return false;
   };
 
+  $scope.isVideo = function (file) {
+    if (file) {
+      return file.contentType && /^video/.test(file.contentType);
+    }
+    return false;
+  };
+
+
   $scope.fileSize = function (size) {
     if (!size) {
       return '0 B';
