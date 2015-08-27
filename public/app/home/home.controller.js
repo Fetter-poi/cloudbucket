@@ -16,11 +16,13 @@ angular.module('app').controller('HomeCtrl', function ($scope, Upload, fileServi
       _.forEach(files, function (file) {
         if (!file.$error && file.type !== 'directory' && !/^\./.test(file.name)) {
           $scope.loadingFiles.push(file);
+          var fields = {
+            lastModified: file.lastModified
+          };
+          console.log(fields);
           Upload.upload({
             url: 'v1/files/upload',
-            fields: {
-              'username': $scope.username
-            },
+            fields: fields,
             file: file
           }).progress(function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);

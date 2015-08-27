@@ -93,7 +93,7 @@
     Nome file
   </li>
   <li class="list-group-item">
-    <span class="pull-right">{{file.createdAt | amDateFormat:'DD/MM/YYYY, HH:mm:ss'}}</span>
+    <span class="pull-right">{{file.createdAt | amDateFormat:'DD/MM/YYYY HH:mm'}}</span>
     Data di creazione
   </li>
   <li class="list-group-item">
@@ -101,7 +101,7 @@
     Dimensione
   </li>
   <li class="list-group-item" ng-show="file.dateTimeOriginal">
-    <span class="pull-right">{{file.dateTimeOriginal | amDateFormat:'dddd D MMMM YYYY, HH:mm:ss'}}</span>
+    <span class="pull-right">{{file.dateTimeOriginal | amDateFormat:'dddd D MMMM YYYY, HH:mm'}}</span>
     Data scatto
   </li>
   <li class="list-group-item" ng-show="file.metadata.image.Make && file.metadata.image.Model">
