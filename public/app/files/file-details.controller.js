@@ -24,7 +24,7 @@ angular.module('app').controller('FileDetailsCtrl', function ($scope, $statePara
           }
         ],
         theme: {
-          url: 'http://www.videogular.com/styles/themes/default/latest/videogular.css'
+          url: 'bower_components/videogular-themes-default/videogular.css'
         }
       };
     }
