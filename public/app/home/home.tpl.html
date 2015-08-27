@@ -1,3 +1,14 @@
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="pull-right">{{info.count}}</span>
+    File caricati
+  </li>
+  <li class="list-group-item">
+    <span class="pull-right">{{fileSize(info.totalSize)}}</span>
+    Spazio di archiviazione
+  </li>
+</ul>
+
 <div class="panel panel-default drop-box" ngf-drop ngf-select
      ng-model="files" ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true">
   <div class="panel-body">

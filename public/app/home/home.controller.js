@@ -1,10 +1,14 @@
-angular.module('app').controller('HomeCtrl', function ($scope, Upload, $timeout) {
+angular.module('app').controller('HomeCtrl', function ($scope, Upload, fileService) {
   'use strict';
 
   $scope.loadingFiles = [];
 
   $scope.$watch('files', function () {
     $scope.upload($scope.files);
+  });
+
+  fileService.getInfo().success(function (info) {
+    $scope.info = info;
   });
 
   $scope.upload = function (files) {

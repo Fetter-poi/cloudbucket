@@ -7,6 +7,9 @@ angular.module('app').factory('fileService', function ($http) {
     getTags: function (params) {
       return $http.get('v1/files/tags', {params: params});
     },
+    getInfo: function () {
+      return $http.get('v1/files/info');
+    },
     getById: function (id) {
       return $http.get('v1/files/' + id);
     },
