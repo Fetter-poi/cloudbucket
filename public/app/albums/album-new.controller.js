@@ -7,6 +7,7 @@ angular.module('app').controller('AlbumNewCtrl', function ($scope, $modalInstanc
       albumService.create($scope.model).then(function (response) {
         var albumId = _.last(response.headers('location').split(/\//));
         $state.go('albums/details', {id: albumId});
+        $modalInstance.dismiss('cancel');
       });
     }
   };

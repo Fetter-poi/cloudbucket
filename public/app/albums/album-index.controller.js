@@ -18,7 +18,5 @@ angular.module('app').controller('AlbumIndexCtrl', function ($scope, $modal, alb
       controller: 'AlbumNewCtrl',
       size: 'lg'
     });
-
-
   };
 });
