@@ -58,6 +58,13 @@ angular.module('app').controller('FileDetailsCtrl', function ($scope, $statePara
       });
     });
 
+  $scope.albumSelectLabels = {
+    selectAll: 'Seleziona tutti',
+    selectNone: 'Deseleziona tutti',
+    reset: 'Annulla',
+    search: 'Cerca...',
+    nothingSelected: 'Nessuno'
+  };
 
   $scope.onTagsChanged = function () {
     $scope.file.tags = _.map($scope.tags, function (tag) {

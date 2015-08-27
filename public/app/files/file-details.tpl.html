@@ -19,7 +19,7 @@
   </div>
 </nav>
 
-<div ng-if="file.thumbnail">
+<div ng-if="isImage(file)">
   <a ng-href="v1/files/{{file.filename}}/download" class="thumbnail" target="_blank">
     <img ng-src="v1/files/{{file.filename}}/download"/>
   </a>
@@ -52,34 +52,38 @@
 
 <div class="panel panel-default">
 
-  <form class="form-horizontal panel-body">
-    <div class="form-group">
-      <label class="col-sm-2">Album</label>
+  <div class="panel-body">
+    <form class="form-horizontal ">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Album</label>
 
-      <div class="col-sm-10">
-        <div
-          isteven-multi-select
-          input-model="albums"
-          output-model="selectedAlbums"
-          button-label="title"
-          item-label="title"
-          helper-elements=""
-          tick-property="ticked"
-          >
+        <div class="col-sm-10">
+          <div
+            isteven-multi-select
+            input-model="albums"
+            output-model="selectedAlbums"
+            button-label="title"
+            item-label="title"
+            helper-elements=""
+            tick-property="ticked"
+            translation="albumSelectLabels"
+            >
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Tags</label>
+
+        <div class="col-sm-10">
+          <tags-input ng-model="tags" on-tag-removed="onTagsChanged()" on-tag-added="onTagsChanged()"
+                      placeholder="Aggiungi un tag">
+            <auto-complete source="loadTags($query)"></auto-complete>
+          </tags-input>
         </div>
       </div>
-
-    </div>
-    <div class="form-group">
-      <label class="col-sm-2">Tags</label>
-
-      <div class="col-sm-10">
-        <tags-input ng-model="tags" on-tag-removed="onTagsChanged()" on-tag-added="onTagsChanged()">
-          <auto-complete source="loadTags($query)"></auto-complete>
-        </tags-input>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 
 

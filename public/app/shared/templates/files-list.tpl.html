@@ -12,13 +12,8 @@
     <tr ng-repeat="file in files">
       <td class="album-thumbnail">
         <a ui-sref="files/details({id: file._id})">
-          <div ng-if="isImage(file)">
-            <img ng-if="file.thumbnail" ng-src="v1/files/{{file.thumbnail}}/download"/>
-            <img ng-if="!file.thumbnail" ng-src="v1/files/{{file.filename}}/download"/>
-          </div>
-          <div ng-if="!isImage(file)">
-            <img src="assets/images/Mimetypes-gtk-file-icon.png"/>
-          </div>
+          <img ng-if="file.thumbnail" ng-src="v1/files/{{file.thumbnail}}/download"/>
+          <img ng-if="!file.thumbnail" src="assets/images/Mimetypes-gtk-file-icon.png"/>
         </a>
       </td>
       <td><a ui-sref="files/details({id: file._id})">
@@ -34,9 +29,8 @@
     <div class="row">
       <div class="col-xs-3 col-sm-2 col-md-1" ng-repeat="file in files">
         <a ui-sref="files/details({id: file._id})" class="thumbnail">
-          <img ng-if="isImage(file) && file.thumbnail" ng-src="v1/files/{{file.thumbnail}}/download"/>
-          <img ng-if="isImage(file) && !file.thumbnail" ng-src="v1/files/{{file.filename}}/download"/>
-          <img ng-if="!isImage(file)" src="assets/images/Mimetypes-gtk-file-icon.png"/>
+          <img ng-if="file.thumbnail" ng-src="v1/files/{{file.thumbnail}}/download"/>
+          <img ng-if="!file.thumbnail" src="assets/images/Mimetypes-gtk-file-icon.png"/>
         </a>
       </div>
     </div>
