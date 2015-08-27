@@ -1,7 +1,90 @@
-<p>
-  <a ui-sref="albums/details({ id: $storage.album })">Torna all'album</a>
-</p>
+<nav class="navbar">
+  <div class="container-fluid">
+    <p class="navbar-text"><a ui-sref="albums/details({ id: $storage.album })">
+      <i class="fa fa-arrow-left"></i>
+      Torna all'album</a></p>
 
-<pre>
-  {{file|json}}
-</pre>
+    <div class="nav navbar-nav navbar-right">
+
+      <a title="Scarica" ng-href="v1/files/{{file.filename}}/download?content-disposition=attachment"
+         class="btn btn-info navbar-btn">
+        <i
+          class="fa fa-download"></i> Scarica
+      </a>
+      <button type="button" title="Elimina questo file" ng-click="deleteFile()" class="btn btn-danger navbar-btn"><i
+        class="fa fa-trash-o"></i> Elimina
+      </button>
+
+    </div>
+  </div>
+</nav>
+
+
+<div ng-if="file.thumbnail">
+  <a ng-href="v1/files/{{file.filename}}/download" class="thumbnail" target="_blank">
+    <img ng-src="v1/files/{{file.filename}}/download"/>
+  </a>
+</div>
+
+<div class="panel panel-default">
+
+  <form class="form-horizontal panel-body">
+    <div class="form-group">
+      <label class="col-sm-2">Album</label>
+
+      <div class="col-sm-10">
+        <div
+          isteven-multi-select
+          input-model="albums"
+          output-model="selectedAlbums"
+          button-label="title"
+          item-label="title"
+          helper-elements=""
+          tick-property="ticked"
+          >
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2">Tags</label>
+
+      <div class="col-sm-10">
+        <tags-input ng-model="tags" on-tag-removed="onTagsChanged()" on-tag-added="onTagsChanged()">
+          <auto-complete source="loadTags($query)"></auto-complete>
+        </tags-input>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="pull-right">{{file.originalFilename}}</span>
+    Nome file
+  </li>
+  <li class="list-group-item">
+    <span class="pull-right">{{file.createdAt | amDateFormat:'DD/MM/YYYY, HH:mm:ss'}}</span>
+    Data di creazione
+  </li>
+  <li class="list-group-item">
+    <span class="pull-right">{{fileSize(file.size)}}</span>
+    Dimensione
+  </li>
+  <li class="list-group-item" ng-show="file.dateTimeOriginal">
+    <span class="pull-right">{{file.dateTimeOriginal | amDateFormat:'dddd D MMMM YYYY, HH:mm:ss'}}</span>
+    Data scatto
+  </li>
+  <li class="list-group-item" ng-show="file.metadata.image.Make && file.metadata.image.Model">
+    <span class="pull-right">{{file.metadata.image.Make}} {{file.metadata.image.Model}}</span>
+    Fotocamera
+  </li>
+  <li class="list-group-item"
+      ng-show="(file.width || file.metadata.exif.ExifImageWidth) && (file.height || file.metadata.exif.ExifImageHeight) ">
+    <span class="pull-right">{{file.width || file.metadata.exif.ExifImageWidth}} x {{file.height || file.metadata.exif.ExifImageHeight}}</span>
+    Dimensione immagine
+  </li>
+</ul>
+
+

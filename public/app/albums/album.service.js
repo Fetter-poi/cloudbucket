@@ -1,8 +1,11 @@
 angular.module('app').factory('albumService', function ($http) {
   'use strict';
   return {
-    get: function () {
-      return $http.get('v1/albums');
+    get: function (params) {
+      return $http.get('v1/albums', {params: params});
+    },
+    slim: function (params) {
+      return $http.get('v1/albums/slim', {params: params});
     },
     getById: function (id) {
       return $http.get('v1/albums/' + id);

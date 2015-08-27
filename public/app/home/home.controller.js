@@ -1,6 +1,8 @@
 angular.module('app').controller('HomeCtrl', function ($scope, Upload, $timeout) {
   'use strict';
 
+  $scope.loadingFiles = [];
+
   $scope.$watch('files', function () {
     $scope.upload($scope.files);
   });
@@ -8,7 +10,8 @@ angular.module('app').controller('HomeCtrl', function ($scope, Upload, $timeout)
   $scope.upload = function (files) {
     if (files && files.length) {
       _.forEach(files, function (file) {
-        if (!file.$error) {
+        if (!file.$error && file.type !== 'directory' && !/^\./.test(file.name)) {
+          $scope.loadingFiles.push(file);
           Upload.upload({
             url: 'v1/files/upload',
             fields: {
@@ -20,7 +23,13 @@ angular.module('app').controller('HomeCtrl', function ($scope, Upload, $timeout)
             file.progressPercentage = progressPercentage;
           }).success(function (data, status, headers) {
             var location = headers('location');
-            file._id = _.last(location.split(/\//));
+            if (location) {
+              file._id = _.last(location.split(/\//));
+            } else {
+              file.error = true;
+            }
+          }).error(function () {
+            file.error = true;
           });
         }
       });

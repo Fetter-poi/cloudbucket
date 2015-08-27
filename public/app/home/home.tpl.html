@@ -13,7 +13,7 @@
 </div>
 <div class="panel panel-default" ng-show="files">
   <div class="panel-body">
-    <div class="media upload-results" ng-repeat="file in files">
+    <div class="media upload-results" ng-repeat="file in loadingFiles">
       <div class="media-left" ng-if="isImage(file)">
         <a ng-href="#/files/{{file._id}}" ng-show="file._id">
           <img ngf-src="file || 'assets/images/Upload-toCloud-icon.png'">
@@ -26,12 +26,16 @@
         <a ng-href="#/files/{{file._id}}" ng-show="file._id">
           <h4 class="media-heading">{{file.name}}</h4>
         </a>
-        <h4 class="media-heading" ng-hide="file._id">{{file.name}}</h4>
+        <h4 class="media-heading" ng-hide="file._id || file.error">{{file.name}}</h4>
 
-        <div class="progress">
+        <div class="progress" ng-hide="file.error">
           <div class="progress-bar" ng-style="{width: file.progressPercentage + '%'}">{{file.progressPercentage}}%
           </div>
         </div>
+        <div class="alert alert-danger" ng-show="file.error">
+          <i class="fa fa-warning"> File <strong>{{file.name}}</strong> duplicato</i>
+        </div>
+
       </div>
     </div>
 

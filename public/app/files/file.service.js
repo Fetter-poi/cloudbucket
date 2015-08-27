@@ -1,8 +1,11 @@
 angular.module('app').factory('fileService', function ($http) {
   'use strict';
   return {
-    get: function () {
-      return $http.get('v1/files');
+    get: function (params) {
+      return $http.get('v1/files', {params: params});
+    },
+    getTags: function (params) {
+      return $http.get('v1/files/tags', {params: params});
     },
     getById: function (id) {
       return $http.get('v1/files/' + id);

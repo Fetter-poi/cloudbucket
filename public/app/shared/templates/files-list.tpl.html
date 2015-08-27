@@ -1,0 +1,59 @@
+<div ng-show="files.length">
+
+  <table ng-if="layout === 'list'" class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Nome file</th>
+      <th>Data</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="file in files">
+      <td class="album-thumbnail">
+        <a ui-sref="files/details({id: file._id})">
+          <div ng-if="isImage(file)">
+            <img ng-if="file.thumbnail" ng-src="v1/files/{{file.thumbnail}}/download"/>
+            <img ng-if="!file.thumbnail" ng-src="v1/files/{{file.filename}}/download"/>
+          </div>
+          <div ng-if="!isImage(file)">
+            <img src="assets/images/Mimetypes-gtk-file-icon.png"/>
+          </div>
+        </a>
+      </td>
+      <td><a ui-sref="files/details({id: file._id})">
+        {{file.originalFilename}}
+      </a></td>
+      <td>{{(file.creationDate || file.createdAt) | amDateFormat:'ddd D MMMM YYYY, HH:mm'}}</td>
+    </tr>
+    </tbody>
+
+  </table>
+
+  <div ng-if="layout === 'grid'">
+    <div class="row">
+      <div class="col-xs-3 col-sm-2 col-md-1" ng-repeat="file in files">
+        <a ui-sref="files/details({id: file._id})" class="thumbnail">
+          <img ng-if="isImage(file) && file.thumbnail" ng-src="v1/files/{{file.thumbnail}}/download"/>
+          <img ng-if="isImage(file) && !file.thumbnail" ng-src="v1/files/{{file.filename}}/download"/>
+          <img ng-if="!isImage(file)" src="assets/images/Mimetypes-gtk-file-icon.png"/>
+        </a>
+      </div>
+    </div>
+  </div>
+  <pagination boundary-links="true"
+              total-items="pagination.totalElements"
+              ng-model="pagination.page"
+              items-per-page="pagination.size"
+              class="pagination-sm"
+              max-size="10"
+              previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+
+</div>
+
+
+<div ng-hide="files.length" class="alert alert-info">
+  <p>
+    <i class="fa fa-info"></i>
+    Nessun file</p>
+</div>

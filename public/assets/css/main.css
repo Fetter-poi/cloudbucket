@@ -22,8 +22,7 @@ body {
   border: 5px dashed blue;
 }
 
-.upload-results img {
-  max-height: 96px;
+.upload-results img, .album-thumbnail img {
+  max-height: 48px;
 }
-
 

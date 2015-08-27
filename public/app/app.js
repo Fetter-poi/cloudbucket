@@ -13,9 +13,12 @@ angular.module('app', [
   'pascalprecht.translate',
   'dialogs.main',
   'angularMoment',
+  'isteven-multi-select',
+  'ngTagsInput',
+  'toastr',
   'ngStorage'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $translateProvider, toastrConfig) {
     'use strict';
     $stateProvider.state('home', {
       url: '/home',
@@ -25,6 +28,10 @@ angular.module('app', [
       url: '/profile',
       controller: 'ProfileCtrl',
       templateUrl: 'app/profile/profile.tpl.html'
+    }).state('search', {
+      url: '/search',
+      controller: 'SearchCtrl',
+      templateUrl: 'app/search/search.tpl.html'
     }).state('albums', {
       url: '/albums',
       controller: 'AlbumIndexCtrl',
@@ -61,6 +68,9 @@ angular.module('app', [
       DIALOGS_NO: 'No'
     });
     $translateProvider.preferredLanguage('it');
+    toastrConfig.timeOut = 2000;
   }).run(function (amMoment) {
+    'use strict';
+
     amMoment.changeLocale('it');
   });

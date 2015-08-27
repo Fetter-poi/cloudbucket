@@ -24,11 +24,6 @@
   "globals": {
     "$": false,
     "_": false,
-    "angular": false,
-    "describe": false,
-    "before": false,
-    "assert": false,
-    "expect": false,
-    "it": false
+    "angular": false
   }
 }
